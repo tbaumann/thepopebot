@@ -38,9 +38,9 @@ GH_USER_EMAIL=$(echo "$GH_USER_JSON" | jq -r '.email // "\(.id)+\(.login)@users.
 git config --global user.name "$GH_USER_NAME"
 git config --global user.email "$GH_USER_EMAIL"
 
-# Clone branch
+# Clone branch with submodules
 if [ -n "$REPO_URL" ]; then
-    git clone --single-branch --branch "$BRANCH" --depth 1 "$REPO_URL" /job
+    git clone --single-branch --branch "$BRANCH" --depth 1 --recurse-submodules "$REPO_URL" /job
 else
     echo "No REPO_URL provided"
 fi
@@ -50,8 +50,16 @@ cd /job
 # Create temp directory for agent use (gitignored via tmp/)
 mkdir -p /job/tmp
 
-# Symlink pi-skills into .pi/skills/ so Pi discovers them
-ln -sf /pi-skills/brave-search /job/.pi/skills/brave-search
+# Install npm dependencies for pi-skills that need them
+# Note: pi-skills is a git submodule at .pi/skills/pi-skills/
+# We install skill-specific deps at runtime (not build time) to keep base image lightweight
+echo "Installing pi-skills dependencies..."
+if [ -d "/job/.pi/skills/pi-skills/browser-tools" ]; then
+    (cd /job/.pi/skills/pi-skills/browser-tools && npm install --silent)
+fi
+if [ -d "/job/.pi/skills/pi-skills/brave-search" ]; then
+    (cd /job/.pi/skills/pi-skills/brave-search && npm install --silent)
+fi
 
 # Setup logs
 LOG_DIR="/job/logs/${JOB_ID}"
