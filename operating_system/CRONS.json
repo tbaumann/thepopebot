@@ -14,6 +14,13 @@
     "enabled": false
   },
   {
+    "name": "DAILY_CALENDAR",
+    "schedule": "30 8 * * 1-5",
+    "type": "agent",
+    "job": "Read the file at operating_system/DAILY_CALENDAR.md and complete the tasks described there.",
+    "enabled": true
+  },
+  {
     "name": "ping",
     "schedule": "*/1 * * * *",
     "type": "command",
