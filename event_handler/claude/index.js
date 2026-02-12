@@ -1,5 +1,6 @@
 const path = require('path');
 const { render_md } = require('../utils/render-md');
+const { withRateLimit } = require('./rate-limiter');
 
 const DEFAULT_MODEL = 'claude-sonnet-4-20250514';
 
