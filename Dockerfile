@@ -32,6 +32,8 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | d
     && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g @mariozechner/pi-coding-agent
+RUN npm install -g @mariozechner/gccli
+RUN npm install -g @mariozechner/gmcli
 
 # Create Pi config directory (extension loaded from repo at runtime)
 RUN mkdir -p /root/.pi/agent
@@ -42,6 +44,7 @@ WORKDIR /pi-skills/browser-tools
 RUN npm install
 WORKDIR /pi-skills/brave-search
 RUN npm install
+
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
