@@ -73,6 +73,20 @@ Set `"enabled": true` to activate a scheduled job.
 
 Add custom skills for the agent in `.pi/skills/`. Skills extend the agent's capabilities with specialized tools and behaviors.
 
+thepopebot includes:
+- **Custom skills** - Project-specific skills like `llm-secrets` and `modify-self` (committed directly)
+- **pi-skills submodule** - Community-maintained skills from [badlogic/pi-skills](https://github.com/badlogic/pi-skills) (managed as git submodule at `.pi/skills/pi-skills/`)
+
+Available skills from pi-skills submodule:
+- `browser-tools` - Interactive browser automation via Chrome DevTools Protocol
+- `brave-search` - Web search and content extraction via Brave Search API
+- `gccli`, `gdcli`, `gmcli` - Google Calendar, Drive, and Gmail CLI tools
+- `transcribe` - Audio transcription
+- `vscode` - VS Code integration
+- `youtube-transcript` - YouTube video transcript extraction
+
+For detailed information about submodule management, see [docs/SUBMODULES.md](SUBMODULES.md).
+
 ---
 
 ## Security

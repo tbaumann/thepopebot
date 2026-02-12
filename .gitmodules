@@ -1,0 +1,3 @@
+[submodule ".pi/skills/pi-skills"]
+	path = .pi/skills/pi-skills
+	url = https://github.com/badlogic/pi-skills.git

@@ -46,6 +46,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
+          submodules: true
 
       - name: Gather job results and notify
         env:
