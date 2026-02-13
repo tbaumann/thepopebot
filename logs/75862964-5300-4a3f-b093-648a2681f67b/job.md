@@ -1,0 +1,1 @@
+Read the file at operating_system/DAILY_CALENDAR.md and complete the tasks described there. This is a test run of the DAILY_CALENDAR task to preview how the motivational summary looks before it runs automatically via cron.
